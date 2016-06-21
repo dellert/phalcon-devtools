@@ -152,7 +152,12 @@ abstract class Command implements CommandsInterface
         $iterator = new \RecursiveIteratorIterator($directory);
         foreach ($iterator as $f) {
             if (preg_match('/config\.php$/i', $f->getPathName())) {
-                $config = include($f->getPathName());
+                if(!class_exists('\Phalcon\Config')) {
+                    $config = include($f->getPathName());
+                } else {
+                    $config = new \Phalcon\Config;
+                }
+                
                 if (is_array($config)) {
                     $config = new Config($config);
                 }
