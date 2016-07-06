@@ -11,10 +11,6 @@
             "email": "team@phalconphp.com"
         }
     ],
-    "require": {
-        "php": ">=5.3.9",
-        "ext-phalcon": "^2.0"
-    },
     "require-dev": {
         "kherge/box": "^2.7"
     },
