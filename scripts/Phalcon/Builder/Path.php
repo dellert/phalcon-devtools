@@ -61,6 +61,15 @@ class Path
                     }
 
                     return $config;
+                } elseif(file_exists($this->rootPath . $configPath. 'web.php')) {
+                    $config = include($this->rootPath . $configPath . 'web.php');
+                    $config->merge(include($this->rootPath . $configPath . 'vagrant/web.php'));
+
+                    if (is_array($config)) {
+                        $config = new Config($config);
+                    }
+
+                    return $config;
                 }
             }
         }
